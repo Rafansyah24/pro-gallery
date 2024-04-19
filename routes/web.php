@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UploadController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Auth;
@@ -66,5 +67,6 @@ Route::get('export-albums', [AlbumController::class, 'exportAlbumToExcel'])->nam
 
 Route::group(['middleware' => ['auth', 'admin']], function() {
     Route::get('/admin/dashboard', [AdminController::class, 'index_dashboard'])->name('dashboard.dashboard');
+    Route::get('/admin/data_user', [UserController::class, 'index_user'])->name('admin.data_user');
 });
 
