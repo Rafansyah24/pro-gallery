@@ -24,25 +24,27 @@
     <div class="container-fluid mb-5">
     	<div class="row">
     		<div class="card-columns">
-
-				@foreach ($album as $albm)
-				<div class="card card-pin">
-    				<img class="card-img" src="{{asset('storage/' . $albm->photo)}}" alt="Card image">
-    				<div class="overlay">
-    					<h2 class="card-title title">{{$albm->nama_album}}</h2>
-						<p style="color: white; font-size: 18px; text-align: center;">{{$albm->desc}}</p>
-    					<div class="more">
-							<a href="{{ route('detailalbum', $albm->id)}}" class="mr-2"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More </a>
-							<form action="{{ route('hapusAlbum', $albm->id) }}" method="POST">
-								@csrf
-								@method('DELETE')
-								<button type="submit" class="btn btn-sm btn-outline-danger mx-1 w-200">Hapus</button>
-				   			</form>
-    					</div>
-    				</div>
-    			</div>
-				@endforeach
-    			
+				@if (!is_null($album))
+					@foreach ($album as $albm)
+						<div class="card card-pin">
+							<img class="card-img" src="{{ asset('storage/' . $albm->photo) }}" alt="Card image">
+							<div class="overlay">
+								<h2 class="card-title title">{{ $albm->nama_album }}</h2>
+								<p style="color: white; font-size: 18px; text-align: center;">{{ $albm->desc }}</p>
+								<div class="more">
+									<a href="{{ route('detailalbum', $albm->id) }}" class="mr-2"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More </a>
+									<form action="{{ route('hapusAlbum', $albm->id) }}" method="POST">
+										@csrf
+										@method('DELETE')
+										<button type="submit" class="btn btn-sm btn-outline-danger mx-1 w-200">Hapus</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					@endforeach
+				@else
+					<p>Tidak ada album yang tersedia.</p>
+				@endif
     		</div>
     	</div>
     </div>

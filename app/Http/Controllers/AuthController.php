@@ -52,9 +52,16 @@ class AuthController extends Controller
         ]);
     
         if (Auth::attempt($data)) {
-            $request->session()->regenerate();
-            return redirect()->route('home')->with('success', 'Login berhasil');
+            // Check if the authenticated user is an admin
+            if (Auth::user()->role === 'admin') {
+                // If the user is an admin, redirect to the admin dashboard
+                return redirect()->route('dashboard.dashboard')->with('success', 'Login berhasil');
+            } else {
+                // If the user is not an admin, redirect to the user dashboard or any other route you prefer
+                return redirect()->route('home')->with('success', 'Login berhasil');
+            }
         } else {
+            // If authentication fails, redirect back to the login page with an error message
             return redirect()->route('login')->with('error', 'Username atau password salah.');
         }
     }

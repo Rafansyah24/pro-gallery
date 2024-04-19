@@ -15,17 +15,10 @@ class AlbumController extends Controller
 {
     public function index_create()
     {
-        // Dapatkan semua album yang dimiliki oleh pengguna yang sedang masuk
-        $userAlbums = auth()->user()->albums;
-    
-        // Jika pengguna tidak memiliki album, kembalikan pesan error
-        if ($userAlbums->isEmpty()) {
-            return redirect()->route('profile')->with('error', 'Anda tidak memiliki album. Silakan buat album terlebih dahulu.');
-        }
-    
-        // Jika pengguna memiliki album, kembalikan view dengan opsi album yang dimiliki pengguna
-        return view('album.createalbum', compact('userAlbums'));
+        return view('album.createalbum');
     }
+
+    
 
     public function create_album(Request $request)
     {
