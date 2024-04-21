@@ -47,7 +47,8 @@ Route::post('/albumcreate',[AlbumController::class,'create_album'])->name('creat
 Route::delete('/albums/{id}', [AlbumController::class, 'hapus_album'])->name('hapusAlbum');
 Route::get('/detailalbum/{id}', [ProfileController::class,'show_album'])->name('detailalbum');
 Route::delete('/photos/{id}', [ProfileController::class, 'deletePhoto'])->name('deletePhoto');
-Route::get('/profile/{id}', [ProfileController::class, 'showProfile'])->name('profile.profile');
+Route::get('/profile/{username}', [ProfileController::class, 'showProfile'])->name('profile.profile');
+
 
 
 
@@ -68,5 +69,8 @@ Route::get('export-albums', [AlbumController::class, 'exportAlbumToExcel'])->nam
 Route::group(['middleware' => ['auth', 'admin']], function() {
     Route::get('/admin/dashboard', [AdminController::class, 'index_dashboard'])->name('dashboard.dashboard');
     Route::get('/admin/data_user', [UserController::class, 'index_user'])->name('admin.data_user');
+    Route::get('/admin/data_foto', [UploadController::class, 'dataFoto'])->name('admin.data_foto');
+    Route::get('/admin/data_report', [UploadController::class, 'dataReport'])->name('admin.data_report');
 });
+
 

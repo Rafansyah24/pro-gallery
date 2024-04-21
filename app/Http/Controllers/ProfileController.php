@@ -17,15 +17,29 @@ class ProfileController extends Controller
     public function index_profile()
     {
         $user = auth()->user();
-        $album = $user->albums;
-
-        if ($album->isEmpty()) {
-            return view('profile.profile', ['user' => $user, 'album' => null, 'error' => 'Tidak ada album yang tersedia']);
-        } else {
-            return view('profile.profile', compact('album', 'user'));
+        $albums = $user->albums;
+        $totalAlbumsCount = $user->albums->count();
+        // foreach ($albums as $album) {
+        //     $album->encrypted_id = Crypt::encrypt($album->id);
+        // }
+        $totalPhotosCount = 0;
+        foreach ($user->albums as $album) {
+            $totalPhotosCount += $album->Foto()->count();
         }
-        // Lakukan logika untuk menampilkan halaman profil
-        return view('profile.profile'); // Ganti 'profile.index' dengan nama file blade untuk halaman profil Anda
+        $totalLikesCount = 0;
+
+        foreach ($user->albums as $album) {
+            foreach ($album->foto as $photo) {
+                $totalLikesCount += $photo->likes()->count();
+            }
+        }
+
+        $photos = auth()->user()->Foto()->get(); 
+        // dd($photos);
+
+
+        $isOwnProfile = auth()->check() && auth()->user()->id === $user->id;
+        return view("profile.profile", compact('user', 'albums', 'isOwnProfile', 'totalAlbumsCount', 'totalPhotosCount', 'totalLikesCount', 'photos'));
     }
 
     public function editProfile()
@@ -78,10 +92,30 @@ class ProfileController extends Controller
         return view('album.detailalbum', compact('user', 'album', 'photos'));
     }
 
-    public function showProfile($id)
+    public function showProfile($username)
     {
-    $user = User::findOrFail($id);
-    return view('profile.profile', compact('user'));
+            $user = User::where('username', $username)->firstOrFail();
+            $albums = $user->albums;
+            $totalAlbumsCount = $user->albums->count();
+            // foreach ($albums as $album) {
+            //     $album->encrypted_id = Crypt::encrypt($album->id);
+            // }
+            $totalPhotosCount = 0;
+            foreach ($user->albums as $album) {
+                $totalPhotosCount += $album->Foto()->count();
+            }
+            $totalLikesCount = 0;
+    
+            foreach ($user->albums as $album) {
+                foreach ($album->Foto as $photo) {
+                    $totalLikesCount += $photo->likes()->count();
+                }
+            }
+            $photos = $album->Foto;
+            
+            $isOwnProfile = auth()->check() && auth()->user()->id === $user->id;
+            return view("profile.profile", compact('user', 'albums', 'isOwnProfile', 'totalAlbumsCount', 'totalPhotosCount', 'totalLikesCount', 'photos'));
+        
     }
 
 

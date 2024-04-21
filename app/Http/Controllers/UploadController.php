@@ -45,5 +45,15 @@ class UploadController extends Controller
     return redirect()->route('home')->with('success', 'Foto Berhasil Di Upload');
     }
 
+    public function dataFoto()
+    {
+        $dfoto = Foto::all();
+        return view('dashboard.data_foto', compact('dfoto'));
+    }
+
+    public function dataReport()
+    {
+        return view('dashboard.data_report');
+    }
 
 }

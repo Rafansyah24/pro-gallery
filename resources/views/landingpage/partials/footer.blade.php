@@ -1,6 +1,7 @@
 
 <script src="{{ asset('/LandingPage/assets/js/app.js')}}"></script>
 <script src="{{ asset('/LandingPage/assets/js/theme.js')}}"></script>
+<script src="https://kit.fontawesome.com/fcf02eb2a6.js" crossorigin="anonymous"></script>
 
 <footer class="footer pt-5 pb-5 text-center">
     

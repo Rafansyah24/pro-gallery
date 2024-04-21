@@ -36,32 +36,32 @@
                     <table id="example1" class="table table-bordered table-striped">
                     <thead>
                     <tr>
-                        <th>No.</th>
-                        <th>Nama</th>
-                        <th>Username</th>
-                        <th>Alamat</th>
-                        <th>Email</th>
-                        <th>Aksi</th>
+                        <th>#</th>
+                        <th>User</th>
+                        <th>Photo</th>
+                        <th>Violation</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                        <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
                         @php
                         $no = 1;
                         @endphp
-                        @foreach($users as $item)
+
                         <tr>
                             <td>{{ $no++ }}</td>
-                            <td>{{ $item->nama_lengkap }}</td>
-                            <td>{{ $item->username }}</td>
-                            <td>{{ $item->alamat }}</td>
-                            <td>{{ $item->email }}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                             <td>
-                                <a href="" type="button" class="btn btn-warning">Edit</a>
-                                <a href="" type="button" class="btn btn-danger">Hapus</a>
+                                <!-- Actions for admin -->
                             </td>
-                            <!-- Add more table data if needed -->
                         </tr>
-                        @endforeach
+                        
                     </tbody>
                     </table>
                 </div>

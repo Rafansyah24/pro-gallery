@@ -2,6 +2,6 @@
 
 @include('dashboard.partials.sidebar')
 
-@yield('contentDashboard')
+@yield('content')
 
 @include('dashboard.partials.footer')
