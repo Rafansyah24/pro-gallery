@@ -41,6 +41,13 @@ class UploadController extends Controller
     $photo->file_foto = $path;
     $photo->save();
 
+    $message = 'Uploaded photo successfully.';
+    activity()
+        ->performedOn($photo) // Tandai aktivitas ini sebagai dilakukan pada objek Foto yang baru saja dibuat
+        ->causedBy(Auth::user())
+        ->withProperties(['judul_foto' => $request->judul_foto])
+        ->log($message);
+
     // Redirect atau kembali ke halaman yang sesuai
     return redirect()->route('home')->with('success', 'Foto Berhasil Di Upload');
     }

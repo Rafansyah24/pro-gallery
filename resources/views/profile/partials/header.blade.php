@@ -20,8 +20,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarsDefault">
             <ul class="navbar-nav mr-auto align-items-center">
-                <form class="bd-search hidden-sm-down">
-                    <input type="text" class="form-control bg-graylight border-gray-200 font-weight-bold" id="search-input" placeholder="Search..." autocomplete="off">
+                <form class="bd-search hidden-sm-down" action="{{ route('users.search')}}" method="GET">
+                    <input type="text" class="form-control bg-graylight border-gray-200 font-weight-bold" id="search" name="search" placeholder="Search..." autocomplete="off">
                     <div class="dropdown-menu bd-search-results" id="search-results">
                     </div>
                 </form>
@@ -48,7 +48,7 @@
                 <svg style="margin-top:10px;" class="_3DJPT" version="1.1" viewbox="0 0 32 32" width="21" height="21" aria-hidden="false" data-reactid="71"><path d="M7 15.5c0 1.9-1.6 3.5-3.5 3.5s-3.5-1.6-3.5-3.5 1.6-3.5 3.5-3.5 3.5 1.6 3.5 3.5zm21.5-3.5c-1.9 0-3.5 1.6-3.5 3.5s1.6 3.5 3.5 3.5 3.5-1.6 3.5-3.5-1.6-3.5-3.5-3.5zm-12.5 0c-1.9 0-3.5 1.6-3.5 3.5s1.6 3.5 3.5 3.5 3.5-1.6 3.5-3.5-1.6-3.5-3.5-3.5z" data-reactid="22"></path></svg>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right shadow-lg" aria-labelledby="dropdown02">
-                    <a type="button" href="{{ route('exportAlbumToExcel') }}" class="dropdown-item btn btn-outline-success text-center" style="margin-right: 5px;" href="#">Export</a>
+                    <a type="button" href="{{ route('UserActivityController') }}" class="dropdown-item btn btn-outline-success text-center" style="margin-right: 5px;" href="#">Export</a>
                     <div class="dropdown-divider"></div>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST">
                         @csrf

@@ -23,6 +23,13 @@
 						<p style="color: white; font-size: 18px; text-align: center;">{{$photo->desc}}</p>
     					<div class="more">
 							<a href="{{route('showFoto' , ['id' => $photo->id])}}" class="mr-2"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More </a>
+							<form id="likeForm" action="{{ route('like') }}" method="POST" class="d-inline">
+								@csrf
+								<input type="hidden" name="foto_id" value="{{ $photo->id }}">
+								<button type="submit" class="btn  btn-primary like-btn p-0" style="outline: none; border: none; background: none;">
+									<i class="fa fa-heart mr-1" style="color: {{ $photo->likedByUser() ? '#f00030' : '#ccc' }}; border: 1px solid #ccc; border-radius: 50%; padding: 5px;"></i>
+								</button>
+							</form>
     					</div>
     				</div>
     			</div>

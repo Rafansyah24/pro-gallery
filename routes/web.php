@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\UserActivityController;
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
@@ -27,6 +28,8 @@ use Symfony\Component\HttpKernel\Profiler\Profile;
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/home', [HomeController::class, 'index_home'])->name('home');
 });
+
+Route::get('/landingSearch', [HomeController::class, 'search'])->name('users.search');
 
 Route::get('/', [AuthController::class, 'login'])->name('login');
 Route::post('/loginPost', [AuthController::class, 'loginStore'])->name('loginPost');
@@ -63,7 +66,10 @@ Route::post('/like', [HomeController::class, 'like'])->name('like');
 
 
 //export album
-Route::get('export-albums', [AlbumController::class, 'exportAlbumToExcel'])->name('exportAlbumToExcel');
+// Route::get('export-albums', [AlbumController::class, 'exportAlbumToExcel'])->name('exportAlbumToExcel');
+Route::get('/export-user-activity', [UserActivityController::class, 'exportUserActivity'])->name('UserActivityController');
+Route::get('/export-all-user-activity', [UserActivityController::class, 'exportAllUserActivity'])->name('AllUserActivity');
+
 
 
 Route::group(['middleware' => ['auth', 'admin']], function() {
@@ -71,6 +77,8 @@ Route::group(['middleware' => ['auth', 'admin']], function() {
     Route::get('/admin/data_user', [UserController::class, 'index_user'])->name('admin.data_user');
     Route::get('/admin/data_foto', [UploadController::class, 'dataFoto'])->name('admin.data_foto');
     Route::get('/admin/data_report', [UploadController::class, 'dataReport'])->name('admin.data_report');
+    Route::get('/admin/data_log', [UserActivityController::class, 'showActivityLog'])->name('admin.data_log');
 });
 
 
+Route::post('/laporFoto/{foto_id}', [ExploreController::class, 'laporFoto'])->name('laporFoto');

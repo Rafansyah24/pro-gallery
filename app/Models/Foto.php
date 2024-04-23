@@ -39,5 +39,9 @@ class Foto extends Model
         $user = auth()->user();
         return $user ? $this->likes()->where('user_id', $user->id)->exists():false;
     }
-
+    
+    public function reports()
+    {
+        return $this->belongsToMany(Report::class);
+    }
 }

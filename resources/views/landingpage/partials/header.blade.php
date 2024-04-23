@@ -9,7 +9,7 @@
     <script type="text/javascript"> (function() { var css = document.createElement('link'); css.href = 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })(); </script>
     <link rel="stylesheet" href="{{ asset('/LandingPage/assets/css/app.css')}}">
     <link rel="stylesheet" href="{{ asset('/LandingPage/assets/css/theme.css')}}">
-
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -21,8 +21,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarsDefault">
     	<ul class="navbar-nav mr-auto align-items-center">
-    		<form class="bd-search hidden-sm-down">
-    			<input type="text" class="form-control bg-graylight border-gray-200 font-weight-bold" id="search-input" placeholder="Search..." autocomplete="off">
+    		<form class="bd-search hidden-sm-down" action="{{ route('users.search')}}" method="GET">
+    			<input type="text" class="form-control bg-graylight border-gray-200 font-weight-bold" id="search" name="search" placeholder="Search..." autocomplete="off">
     			<div class="dropdown-menu bd-search-results" id="search-results">
     			</div>
     		</form>

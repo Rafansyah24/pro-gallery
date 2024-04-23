@@ -52,6 +52,9 @@ class AuthController extends Controller
         ]);
     
         if (Auth::attempt($data)) {
+            activity()
+                ->causedBy(Auth::user())
+                ->log('User successfully logged in.');
             // Check if the authenticated user is an admin
             if (Auth::user()->role === 'admin') {
                 // If the user is an admin, redirect to the admin dashboard

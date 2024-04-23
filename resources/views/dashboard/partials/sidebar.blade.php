@@ -65,7 +65,7 @@
             <ul class="nav nav-treeview">
 
               <li class="nav-item">
-                <a href="data_report" class="nav-link">
+                <a href="data_log" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Report</p>
                 </a>

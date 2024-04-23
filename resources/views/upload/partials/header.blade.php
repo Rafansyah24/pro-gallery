@@ -20,8 +20,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarsDefault">
             <ul class="navbar-nav mr-auto align-items-center">
-                <form class="bd-search hidden-sm-down">
-                    <input type="text" class="form-control bg-graylight border-gray-200 font-weight-bold" id="search-input" placeholder="Search..." autocomplete="off">
+                <form class="bd-search hidden-sm-down" action="{{ route('users.search')}}" method="GET">
+                    <input type="text" class="form-control bg-graylight border-gray-200 font-weight-bold" id="search" name="search" placeholder="Search..." autocomplete="off">
                     <div class="dropdown-menu bd-search-results" id="search-results">
                     </div>
                 </form>

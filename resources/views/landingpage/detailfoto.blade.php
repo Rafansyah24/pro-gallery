@@ -22,7 +22,7 @@
 										<a class="author-name font-weight-bold" href="{{ route('profile.profile', ['username' => $userName]) }}">
 											{{ $userName }}
 										</a>
-										<div class="dropdown ml-2">
+										{{-- <div class="dropdown ml-2">
 											<a class="nav-link" href="#" id="reportDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 												<svg style="margin-top:10px;" class="_3DJPT" version="1.1" viewbox="0 0 32 32" width="21" height="21" aria-hidden="false" data-reactid="71">
 													<path d="M7 15.5c0 1.9-1.6 3.5-3.5 3.5s-3.5-1.6-3.5-3.5 1.6-3.5 3.5-3.5 3.5 1.6 3.5 3.5zm21.5-3.5c-1.9 0-3.5 1.6-3.5 3.5s1.6 3.5 3.5 3.5 3.5-1.6 3.5-3.5-1.6-3.5-3.5-3.5zm-12.5 0c-1.9 0-3.5 1.6-3.5 3.5s1.6 3.5 3.5 3.5 3.5-1.6 3.5-3.5-1.6-3.5-3.5-3.5z" data-reactid="22"></path>
@@ -34,7 +34,8 @@
 												<a class="dropdown-item" href="#" onclick="reportFoto('Violent Content')">Violent Content</a>
 												<a class="dropdown-item" href="#" onclick="reportFoto('Hate Speech')">Hate Speech</a>
 											</div>
-										</div>										
+										</div> --}}
+										
 									</div>
 								</div>
 								<!-- Title -->
